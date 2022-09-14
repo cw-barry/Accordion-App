@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 const Question = ({ title, info }) => {
+  const [displayDetails, setDisplayDetails] = useState(false);
   return (
     <article className="question">
       <header>
         <h4>{title}</h4>
-        <button className="btn">
-          <AiOutlinePlus />
+        <button
+          className="btn"
+          onClick={() => setDisplayDetails(!displayDetails)}
+        >
+          {displayDetails ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </button>
       </header>
-      {/* put info here */}
+      {displayDetails && <p>{info}</p>}
     </article>
   );
 };
